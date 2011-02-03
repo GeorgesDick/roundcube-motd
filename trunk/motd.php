@@ -78,13 +78,6 @@ write_log('motd', 'Dans ma_fonction()');
     return $args;
   }  
 
-  function save_prefs($args){
-    if($args['section'] == 'general'){
-      $args['prefs']['nomotd'] = get_input_value('_nomotd', RCUBE_INPUT_POST);
-      return $args;
-    }
-  }
-
   function motd_disable(){
     if($_POST['_motddisable'] == 1){
       $rcmail = rcmail::get_instance();    
