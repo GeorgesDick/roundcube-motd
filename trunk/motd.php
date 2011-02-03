@@ -26,7 +26,7 @@ class motd extends rcube_plugin
     else
       $this->load_config('config/config.inc.php.dist');         
   
-    $this->include_script('motd.js');
+//    $this->include_script('motd.js');
     $this->add_texts('localization/', false);
     $this->register_action('plugin.motd', array($this, 'motd_startup'));        
     $this->add_hook('template_object_motd_message', array($this, 'motd_html_motd_message'));
