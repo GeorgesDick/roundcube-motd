@@ -1,7 +1,7 @@
-#summary
+#motd
 {
   position: absolute;
-  top: 85px;
+  top: 65px;
   left: 20px;
   bottom: 20px;
   right: 20px;
@@ -10,7 +10,7 @@
   display: none;
 }
 
-#summary legend
+#motd legend
 {
   font-family: "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
   font-size: 13px;
@@ -19,24 +19,24 @@
   color: #333333;
 }
 
-#summary td
+#motd td
 {
   border-bottom: 1px solid #EBEBEB;
 }
 
-a.summaryaction,
-td.summaryaction
+a.motdaction,
+td.motdaction
 {
   font-size: 11px;
   font-style: italic;
 }
 
-a.summaryok
+a.motdok
 {
   color: green;
 }
 
-a.summarywarning
+a.motdwarning
 {
   color: red;
 }
