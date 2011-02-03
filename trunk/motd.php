@@ -21,26 +21,18 @@ class motd extends rcube_plugin
 
   function init(){
    
-    if(file_exists("./plugins/motd/config/config.inc.php"))
-      $this->load_config('config/config.inc.php');
-    else
-      $this->load_config('config/config.inc.php.dist');         
-  
-//    $this->include_script('motd.js');
     $this->add_texts('localization/', false);
     $this->register_action('plugin.motd', array($this, 'motd_startup'));        
     $this->add_hook('template_object_motd_message', array($this, 'motd_html_motd_message'));
     $this->add_hook('template_object_motd_disable', array($this, 'motd_html_disable'));
-    $this->add_hook('preferences_list', array($this, 'prefs_table'));
-    $this->add_hook('preferences_save', array($this, 'save_prefs'));
-    $this->add_hook('login_after', array($this, 'login_after'));
+    $this->add_hook('login_after', array($this, 'ma_fonction'));
     $this->register_action('plugin.motd_disable', array($this, 'motd_disable'));    
   }
   
-  function login_after($args){
+  function ma_fonction($args){
+write_log('motd', 'Dans ma_fonction()');
     $rcmail = rcmail::get_instance();
     $rcmail->output->redirect(array('_action' => 'plugin.motd', '_task' => 'mail'));
-    die;
   }
   
   function motd_startup(){
@@ -85,14 +77,6 @@ class motd extends rcube_plugin
     $args['content'] = $html;
     return $args;
   }  
-
-  function prefs_table($args){
-    if ($args['section'] == 'general') {
-      $rcmail = rcmail::get_instance();    
-      $nomotd= $rcmail->config->get('nomotd');
-    }
-    return $args;
-  }
 
   function save_prefs($args){
     if($args['section'] == 'general'){
